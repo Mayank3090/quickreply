@@ -1,0 +1,36 @@
+import React from 'react';
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import Slider from './Slider';
+
+export default {
+  title: 'Components/Slider',
+  component: Slider,
+  argTypes: {
+    type: {
+      options: ['continuous', 'discrete'],
+      control: { type: 'radio' },
+    },
+    subtype: {
+      options: ['single', 'range'],
+      control: { type: 'radio' },
+    },
+    steps: {
+      control: { type: 'number', min: 1, max: 10 },
+    },
+    handleSize: {
+      options: ['size_24', 'size_32'],
+      control: { type: 'radio' },
+    },
+    onChange: { action: 'value-changed' },
+  },
+} as ComponentMeta<typeof Slider>;
+
+const Template: ComponentStory<typeof Slider> = (args) => <Slider {...args} />;
+
+export const Default = Template.bind({});
+Default.args = {
+  type: 'continuous',
+  subtype: 'single',
+  steps: 5,
+  handleSize: 'size_32',
+};
